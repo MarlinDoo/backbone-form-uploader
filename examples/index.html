@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="Backbone-forms Uploader">
+    <title>Backbone-forms Editor of Uploader</title>
+
+
+    <style type="text/css">
+    #main{width: 600px;}
+    </style>
+  </head>
+  <body>
+
+    <header id="header">Backbone-form Uploader</header>
+
+    <main id="main" class="main"> </main>
+
+    <footer id="footer"></footer>
+
+    <script src="../bower_components/jquery/dist/jquery.js"></script>
+    <script src="../bower_components/underscore/underscore.js"></script>
+    <script src="../bower_components/backbone/backbone.js"></script>
+    <script src="../bower_components/backbone.babysitter/lib/backbone.babysitter.js"></script>
+    <script src="../bower_components/backbone.wreqr/lib/backbone.wreqr.js"></script>
+    <script src="../bower_components/backbone.marionette/lib/core/backbone.marionette.js"></script>
+    <script src="../bower_components/backbone-forms/distribution/backbone-forms.js"></script>
+    <script src="../bower_components/uploader/uploader.js"></script>
+    <script src="../src/uploader.js"></script>
+    <script type="text/javascript">
+var User = Backbone.Model.extend({
+  defaults:{
+    title:'',
+    name:'',
+    email:'',
+    birthday:'',
+    password:'',
+    attaches:[
+        {id:'file_1',name:'file_1'},
+        {id:'file_2',name:'file_2'},
+        {id:'file_3',name:'file_3'}
+    ]
+  },
+  schema: {
+    title:      { type: 'Select', options: ['Mr', 'Mrs', 'Ms'] },
+    name:       'Text',
+    email:      { validators: ['required', 'email'] },
+    birthday:   'Date',
+    password:   'Password',
+    attaches:   {type:'Uploader', multiple: 'multiple'},
+    // attaches:   'Filepicker',
+    // address:    { type: 'NestedModel', model: Address },
+    // notes:      { type: 'List', itemType: 'Text' }
+  }
+});
+
+var user = new User();
+
+var form = new Backbone.Form({
+  model: user
+}).render();
+
+$('#main').append(form.el);
+    </script>
+
+  </body>
+</html>
