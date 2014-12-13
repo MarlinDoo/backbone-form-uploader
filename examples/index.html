@@ -8,6 +8,55 @@
 
     <style type="text/css">
     #main{width: 600px;}
+    .uploadBtn {
+      position: relative;
+      width: 80px;
+      height: 24px;
+      overflow: hidden; }
+      .uploadBtn input {
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: 1;
+        font-size: 460px;
+        padding: 0;
+        cursor: pointer;
+        opacity: 0; }
+    .field-attach {
+      position: relative;
+      display: inline-block;
+      width: 182px;
+      height: 134px;
+      margin-left: 10px;
+      background-color: #eee; }
+      .field-attach .progress {
+        position: absolute;
+        bottom: 20px;
+        left: 0;
+        right: 0;
+        background-image: none;
+        background-color: rgba(100, 100, 100, 0.5) !important; }
+      .fa-remove{
+        position: absolute;;
+        right: 6px;
+        top: 6px; }
+    .field-attach-name {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 0px;
+      text-align: center;
+      line-height: 26px;
+      color: white;
+      overflow: hidden;
+      padding: 0;
+      background: rgba(92, 184, 92, 0.8) !important;
+      filter: Alpha(opacity=80); }
+
+    .field-attach:hover .field-attach-name {
+      height: 26px;
+      transition: height 0.2s; }
     </style>
   </head>
   <body>
@@ -35,11 +84,7 @@ var User = Backbone.Model.extend({
     email:'',
     birthday:'',
     password:'',
-    attaches:[
-        {id:'file_1',name:'file_1'},
-        {id:'file_2',name:'file_2'},
-        {id:'file_3',name:'file_3'}
-    ]
+    attaches:[]
   },
   schema: {
     title:      { type: 'Select', options: ['Mr', 'Mrs', 'Ms'] },
@@ -47,7 +92,7 @@ var User = Backbone.Model.extend({
     email:      { validators: ['required', 'email'] },
     birthday:   'Date',
     password:   'Password',
-    attaches:   {type:'Uploader', multiple: 'multiple'},
+    attaches:   {type:'Uploader', selectButton: true,multiple: 'multiple', url: 'http://localhost/devp/uploader/upload.php', params:{}},
     // attaches:   'Filepicker',
     // address:    { type: 'NestedModel', model: Address },
     // notes:      { type: 'List', itemType: 'Text' }
