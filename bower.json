@@ -1,0 +1,29 @@
+{
+  "name": "backbone-form-uploader",
+  "version": "0.0.1",
+  "authors": [
+    "garydong@outlook.com"
+  ],
+  "description": "upload file editor for backbone-form",
+  "keywords": [
+    "backbone",
+    "backbone-form",
+    "editor",
+    "uploader",
+    "filepicker"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.1",
+    "backbone": "~1.1.2",
+    "backbone-forms": "~0.14.0",
+    "uploader": "~0.9.1"
+  }
+}
